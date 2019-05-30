@@ -1,0 +1,78 @@
+/* Bulma overrides */
+
+// Import Bulma's core
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+
+// Overwrite Bulma's initial variables
+@import 'assets/scss/variables.scss';
+
+$family-sans-serif: $aclu-sans-standard;
+
+$primary: $blue;
+$primary-invert: findColorInvert($primary);
+$secondary: $red;
+$secondary-invert: findColorInvert($secondary);
+$red-compliant: $red-AA-compliant;
+$red-compliant-invert: findColorInvert($primary);
+
+// Import Bulma's derived variables
+@import "~bulma/sass/utilities/derived-variables.sass";
+
+// Breakpoints (see also variables.scss)
+// Disable the fullhd breakpoint
+$fullhd-enabled: false;
+
+// Social colors
+$twitter: #2fa4f0;
+$twitter-invert: findColorInvert($twitter);
+$facebook: #3e5c98;
+$facebook-invert: findColorInvert($facebook);
+
+// General Colors
+$background: $light;
+$text: $grey-80;
+$text-light: $light;
+$border: $offblack;
+$border-hover: black;
+$info: $offblack;
+
+// Override typography variables
+$title-size: $size-1;
+$title-weight: $bold;
+
+$size-small: $size-6;
+$size-normal: $size-5;
+
+// Radius used on buttons and tags
+$radius: 0;
+
+// Section padding -- use multiples of 15px for vertical spacing
+$section-padding: 15px 1.5rem;
+$section-padding-medium: 45px 1.5rem;
+$section-padding-large: 90px 1.5rem;
+
+// COLUMNS
+$column-gap: $spacer;
+
+// Dropdowns
+$dropdown-item-active-background-color: $background;
+$dropdown-item-active-color: $text;
+
+// Add new color variables to the color map to use as bulma classes (e.g. 'is-twitter')
+$addColors: (
+  "dark": ($dark, $light),
+  "light": ($light, $dark),
+  "secondary": ($secondary, $secondary-invert),
+  "twitter": ($twitter, $twitter-invert),
+  "facebook": ($facebook, $facebook-invert)
+);
+$colors: map-merge($colors, $addColors);
+
+// Link colors
+$link: $blue;
+$link-hover: rgba( $blue, 0.75 );
+$link-focus: rgba( $blue, 0.75 );
+
+// Import rest of Bulma
+@import "~bulma/bulma";

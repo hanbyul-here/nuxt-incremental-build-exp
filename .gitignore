@@ -1,0 +1,29 @@
+# dependencies
+node_modules
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
+cache-mock
+
+# Bulma build
+.tmp
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sublime-*
+
+# misc
+.DS_Store

@@ -1,0 +1,37 @@
+@import 'assets/scss/variables.scss';
+
+// MIXINS
+@mixin font-family-compressed () {
+  font-family: $aclu-sans-compressed;
+  line-height: 1;
+  letter-spacing: 0.005rem;
+  word-spacing: 0.1rem;
+  font-weight: $bold;
+}
+@mixin font-family-standard () {
+  font-family: $aclu-sans-standard;
+  line-height: 1.4;
+  letter-spacing: -0.005rem;
+  word-spacing: 0.0625rem;
+  font-weight: $normal;
+}
+@mixin font-family-standard-bold () {
+  font-family: $aclu-sans-standard;
+  line-height: 1.4;
+  letter-spacing: 0rem;
+  word-spacing: 0.0625rem;
+  font-weight: $bold;
+}
+@mixin font-family-serif () {
+  font-family: $aclu-serif;
+  line-height: 1.4;
+  letter-spacing: 0.01rem;
+  word-spacing: -0.12rem;
+}
+
+@mixin section-title () {
+  @include font-family-compressed;
+  font-size: $size-2;
+  text-transform: uppercase;
+  color: $offblack;
+}

@@ -1,0 +1,355 @@
+@import 'assets/scss/mixins.scss';
+// Mixins also pulls in variables.scss
+
+
+// TYPOGRAPHY
+body {
+  @include font-family-standard;
+  font-size: $body-size;
+  color: $grey-80;
+
+  // Bold body text needs different letter-spacing, word-spacing
+  .has-text-weight-bold,
+  b,
+  strong {
+    @include font-family-standard-bold;
+  }
+
+  .has-text-weight-normal {
+    @include font-family-standard;
+  }
+}
+
+// Headings
+h1,
+.is-h1 {
+  @include font-family-compressed;
+  font-size: $size-1;
+  color: $offblack;
+
+  &.is-size-2 {
+    font-size: $size-2;
+  }
+  &.is-size-3 {
+    font-size: $size-3;
+  }
+}
+h2,
+.is-h2  {
+  @include font-family-standard-bold;
+  font-size: $size-4;
+  color: $offblack;
+}
+h3,
+.is-h3  {
+  @include font-family-standard-bold;
+  font-size: $size-5;
+  color: $offblack;
+}
+h4,
+.is-h4  {
+  @include font-family-standard;
+  color: $grey-40;
+  font-size: $size-6;
+}
+
+// TODO: check these
+h5,
+h6 {
+  @include font-family-standard-bold;
+  color: $offblack;
+}
+
+// Section title
+.is-section-title {
+  @include section-title;
+}
+
+
+// Body Text
+
+// Use these sparingly or not at all
+.has-font-family-compressed {
+  @include font-family-compressed;
+  // Compessed: to be used only with sizes 1, 2, 3
+}
+.has-font-family-standard {
+  @include font-family-standard;
+  // Standard: to be used only with sizes 4, 5, 6, 7
+
+  &.has-text-weight-bold,
+  .has-text-weight-bold,
+  b,
+  strong {
+    @include font-family-standard-bold;
+  }
+}
+.has-font-family-serif {
+  @include font-family-serif;
+  font-weight: $normal;
+  // Serif: to be used only with sizes 6, 7, and a modified 5
+
+  &.is-size-5 {
+    font-size: 21px;
+  }
+  &.has-text-weight-bold,
+  .has-text-weight-bold,
+  b,
+  strong {
+    @include font-family-serif;
+    font-weight: $bold;
+  }
+}
+
+// Use these for convenience
+.is-body-text {
+  @include font-family-standard;
+  font-size: $size-5;
+
+  &.has-text-weight-bold,
+  .has-text-weight-bold,
+  b,
+  strong {
+    @include font-family-standard-bold;
+  }
+}
+
+.is-caption {
+  @include font-family-serif;
+  font-size: $size-6;
+}
+.is-credit {
+  @include font-family-serif;
+  font-size: $size-7;
+  color: $grey-60;
+}
+.is-footnote {
+  @include font-family-standard;
+  font-size: $size-7;
+  color: $offblack;
+}
+
+
+// UI Text
+// TODO
+
+// Links
+a {
+  text-decoration: underline;
+
+  &.text-link {
+    @include font-family-standard-bold;
+    color: $text;
+
+    &:hover,
+    &:focus {
+      opacity: $hover-opacity;
+    }
+  }
+}
+nav a,
+button,
+.button,
+.no-underline {
+  text-decoration: none !important;
+}
+nav a,
+button,
+.button {
+  @include font-family-standard-bold;
+}
+button,
+.button {
+  border: none;
+
+  &.is-outlined {
+    border: 2px solid $offblack;
+  }
+
+  &:hover {
+    opacity: $hover-opacity;
+    color: inherit;
+  }
+}
+
+// FORMS
+form * {
+  color: $offblack;
+  border-color: $offblack;
+}
+fieldset {
+  border: none;
+}
+legend {
+  display: table; // IE11
+  white-space: normal; // IE
+  width: 100%; // Edge
+}
+
+
+button,
+input,
+.button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  border-radius: 0;
+  box-shadow: none;
+  display: inline-flex;
+  font-size: 1rem;
+  height: $inputHeight;
+  min-width: $inputHeight;
+  width: auto;
+  line-height: 1.5;
+  padding: calc(.375em - 1px) calc(.625em - 1px);
+  position: relative;
+  vertical-align: top;
+  border: 2px solid $offblack;
+
+  &.is-light {
+    border: 2px solid $white;
+    background-color: transparent;
+  }
+
+}
+input.has-error {
+  border: 2px solid $red !important;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="search"],
+input.is-tall,
+button.is-tall,
+.button.is-tall {
+  height: $inputHeightLarge;
+  min-width: $inputHeightLarge;
+}
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="search"]{
+  padding: 18px 9px 0;
+}
+.text-input-label {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  z-index: 2;
+  font-size: 13px;
+  @include font-family-standard-bold;
+}
+
+.round-icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+
+  &.is-twitter {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTYuMjkgMTguMjU0YzcuNTQ4IDAgMTEuNjc1LTYuMjUzIDExLjY3NS0xMS42NzUgMC0uMTc3LS4wMDQtLjM1NC0uMDEyLS41M0E4LjM0NCA4LjM0NCAwIDAgMCAyMCAzLjkyNGE4LjE4MiA4LjE4MiAwIDAgMS0yLjM1Ni42NDYgNC4xMTggNC4xMTggMCAwIDAgMS44MDQtMi4yN2MtLjc5My40Ny0xLjY3LjgxMi0yLjYwNi45OTZBNC4xMDQgNC4xMDQgMCAwIDAgOS44NSA3LjAzOGExMS42NSAxMS42NSAwIDAgMS04LjQ1Ny00LjI4NyA0LjA5MiA0LjA5MiAwIDAgMC0uNTU2IDIuMDYzIDQuMSA0LjEgMCAwIDAgMS44MjYgMy40MTUgNC4wNzMgNC4wNzMgMCAwIDEtMS44NTgtLjUxM3YuMDUyYTQuMTA1IDQuMTA1IDAgMCAwIDMuMjkxIDQuMDIzIDQuMTA4IDQuMTA4IDAgMCAxLTEuODUzLjA3IDQuMTA4IDQuMTA4IDAgMCAwIDMuODMzIDIuODVBOC4yMzIgOC4yMzIgMCAwIDEgLjk4IDE2LjQ2OGMtLjMzMSAwLS42NTgtLjAyLS45NzktLjA1N2ExMS42MTUgMTEuNjE1IDAgMCAwIDYuMjkgMS44NDMiIGZpbGw9IiNmZmYiLz48L2c+PGRlZnM+PGNsaXBQYXRoIGlkPSJjbGlwMCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGgyMHYyMEgweiIvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPg==');
+    background-size: 22px;
+    background-color: $twitter;
+  }
+  &.is-facebook {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTExLjQ5OSAxOHYtNy4yOThoMi40OTZsLjM3NS0yLjg0NWgtMi44NzFWNi4wNDFjMC0uODIzLjIzMi0xLjM4NCAxLjQzNy0xLjM4NGwxLjUzNS0uMDAxVjIuMTExQTIxLjIxIDIxLjIxIDAgMCAwIDEyLjIzNCAyYy0yLjIxNCAwLTMuNzMgMS4zMjYtMy43MyAzLjc2djIuMDk3SDZ2Mi44NDVoMi41MDRWMThoMi45OTV6IiBmaWxsPSIjZmZmIi8+PC9nPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoMjB2MjBIMHoiLz48L2NsaXBQYXRoPjwvZGVmcz48L3N2Zz4=');
+    background-size: 28px;
+    background-color: $facebook;
+  }
+  &.is-youtube {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzEiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAzMSAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjQ5MDIgMC44ODM0MjNDMTUuNDkwMiAwLjg4MzQyMyA2LjAwNzQxIDAuODgzNDMyIDMuNjI3MzQgMS41MDE4OEMyLjM1Mjk4IDEuODU3OTUgMS4zMDM2MyAyLjkwNzMgMC45NDc1NTkgNC4yMDA0MkMwLjMyOTExNiA2LjU4MDQ4IDAuMzI5MTAyIDExLjUwOTQgMC4zMjkxMDIgMTEuNTA5NEMwLjMyOTEwMiAxMS41MDk0IDAuMzI5MTE2IDE2LjQ1NyAwLjk0NzU1OSAxOC43OTk2QzEuMzAzNjMgMjAuMDkyNyAyLjMzNDIzIDIxLjEyMzMgMy42MjczNCAyMS40Nzk0QzYuMDI2MTUgMjIuMTE2NiAxNS40OTAyIDIyLjExNjYgMTUuNDkwMiAyMi4xMTY2QzE1LjQ5MDIgMjIuMTE2NiAyNC45OTE5IDIyLjExNjYgMjcuMzcxOSAyMS40OTgyQzI4LjY2NSAyMS4xNDIxIDI5LjY5NTYgMjAuMTMwMiAzMC4wMzI5IDE4LjgxODRDMzAuNjcwMSAxNi40NTcgMzAuNjcwMSAxMS41MjgyIDMwLjY3MDEgMTEuNTI4MkMzMC42NzAxIDExLjUyODIgMzAuNjg4OCA2LjU4MDQ4IDMwLjAzMjkgNC4yMDA0MkMyOS42OTU2IDIuOTA3MyAyOC42NjUgMS44NzY3MiAyNy4zNzE5IDEuNTM5MzhDMjQuOTkxOSAwLjg4MzQ1MyAxNS40OTAyIDAuODgzNDIzIDE1LjQ5MDIgMC44ODM0MjNaTTEyLjQ3MjkgNi45NTU0OUwyMC4zNjI5IDExLjUwOTRMMTIuNDcyOSAxNi4wNDQ2VjYuOTU1NDlaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K');
+    background-size: 30px;
+    background-color: $youtube;
+  }
+  &.is-instagram {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNSAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyLjUgMi4yNTMxMkMxNS44Mzc1IDIuMjUzMTIgMTYuMjMzMyAyLjI2NTYyIDE3LjU1MjEgMi4zMjYwNEMyMC45Mzk2IDIuNDgwMjEgMjIuNTIxOSA0LjA4NzUgMjIuNjc2IDcuNDVDMjIuNzM2NSA4Ljc2NzcxIDIyLjc0NzkgOS4xNjM1NCAyMi43NDc5IDEyLjUwMUMyMi43NDc5IDE1LjgzOTYgMjIuNzM1NCAxNi4yMzQ0IDIyLjY3NiAxNy41NTIxQzIyLjUyMDggMjAuOTExNSAyMC45NDI3IDIyLjUyMTkgMTcuNTUyMSAyMi42NzZDMTYuMjMzMyAyMi43MzY1IDE1LjgzOTYgMjIuNzQ5IDEyLjUgMjIuNzQ5QzkuMTYyNSAyMi43NDkgOC43NjY2NyAyMi43MzY1IDcuNDQ4OTYgMjIuNjc2QzQuMDUzMTIgMjIuNTIwOCAyLjQ3OTE3IDIwLjkwNjIgMi4zMjUgMTcuNTUxQzIuMjY0NTggMTYuMjMzMyAyLjI1MjA4IDE1LjgzODUgMi4yNTIwOCAxMi41QzIuMjUyMDggOS4xNjI1IDIuMjY1NjIgOC43Njc3MSAyLjMyNSA3LjQ0ODk2QzIuNDgwMjEgNC4wODc1IDQuMDU4MzMgMi40NzkxNyA3LjQ0ODk2IDIuMzI1QzguNzY3NzEgMi4yNjU2MiA5LjE2MjUgMi4yNTMxMiAxMi41IDIuMjUzMTJaTTEyLjUgMEM5LjEwNTIxIDAgOC42ODAyMSAwLjAxNDU4MzMgNy4zNDY4NyAwLjA3NUMyLjgwNzI5IDAuMjgzMzMzIDAuMjg0Mzc1IDIuODAyMDggMC4wNzYwNDE3IDcuMzQ1ODNDMC4wMTQ1ODMzIDguNjgwMjEgMCA5LjEwNTIxIDAgMTIuNUMwIDE1Ljg5NDggMC4wMTQ1ODMzIDE2LjMyMDggMC4wNzUgMTcuNjU0MkMwLjI4MzMzMyAyMi4xOTM3IDIuODAyMDggMjQuNzE2NyA3LjM0NTgzIDI0LjkyNUM4LjY4MDIxIDI0Ljk4NTQgOS4xMDUyMSAyNSAxMi41IDI1QzE1Ljg5NDggMjUgMTYuMzIwOCAyNC45ODU0IDE3LjY1NDIgMjQuOTI1QzIyLjE4OTYgMjQuNzE2NyAyNC43MTg4IDIyLjE5NzkgMjQuOTI0IDE3LjY1NDJDMjQuOTg1NCAxNi4zMjA4IDI1IDE1Ljg5NDggMjUgMTIuNUMyNSA5LjEwNTIxIDI0Ljk4NTQgOC42ODAyMSAyNC45MjUgNy4zNDY4N0MyNC43MjA4IDIuODExNDYgMjIuMTk5IDAuMjg0Mzc1IDE3LjY1NTIgMC4wNzYwNDE3QzE2LjMyMDggMC4wMTQ1ODMzIDE1Ljg5NDggMCAxMi41IDBWMFpNMTIuNSA2LjA4MTI1QzguOTU1MjEgNi4wODEyNSA2LjA4MTI1IDguOTU1MjEgNi4wODEyNSAxMi41QzYuMDgxMjUgMTYuMDQ0OCA4Ljk1NTIxIDE4LjkxOTggMTIuNSAxOC45MTk4QzE2LjA0NDggMTguOTE5OCAxOC45MTg4IDE2LjA0NTggMTguOTE4OCAxMi41QzE4LjkxODggOC45NTUyMSAxNi4wNDQ4IDYuMDgxMjUgMTIuNSA2LjA4MTI1Wk0xMi41IDE2LjY2NjdDMTAuMTk5IDE2LjY2NjcgOC4zMzMzMyAxNC44MDIxIDguMzMzMzMgMTIuNUM4LjMzMzMzIDEwLjE5OSAxMC4xOTkgOC4zMzMzMyAxMi41IDguMzMzMzNDMTQuODAxIDguMzMzMzMgMTYuNjY2NyAxMC4xOTkgMTYuNjY2NyAxMi41QzE2LjY2NjcgMTQuODAyMSAxNC44MDEgMTYuNjY2NyAxMi41IDE2LjY2NjdaTTE5LjE3MjkgNC4zMjgxMkMxOC4zNDM4IDQuMzI4MTIgMTcuNjcxOSA1IDE3LjY3MTkgNS44MjgxMkMxNy42NzE5IDYuNjU2MjUgMTguMzQzOCA3LjMyODEyIDE5LjE3MjkgNy4zMjgxMkMyMC4wMDEgNy4zMjgxMiAyMC42NzE5IDYuNjU2MjUgMjAuNjcxOSA1LjgyODEyQzIwLjY3MTkgNSAyMC4wMDEgNC4zMjgxMiAxOS4xNzI5IDQuMzI4MTJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K');
+    background-size: 25px;
+    background-color: $instagram;
+  }
+}
+
+// HELPERS
+.nowrap {
+  white-space: nowrap;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.is-relative {
+  position: relative;
+}
+
+// Centering helpers
+.vcenter-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.hcenter-content {
+  display: flex;
+  justify-content: center;
+}
+.vbottom-content {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+// Accessibility
+.screenreader-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+  &.appear-on-focus:focus {
+    position: static;
+    overflow: visible;
+    width: auto;
+  }
+}
+
+// Bulma Overrides
+
+// Fix tiles on IE11
+// per https://roland.codes/blog/ie-flex-collapse-bug/
+.tile {
+  flex-basis: auto;
+}
+
+.container {
+  padding: 0 $spacer;
+}
+
+// Overwrite Bulma's max container width on tablet
+@media screen and (min-width: $tablet) and (max-width: $desktop) {
+  .container {
+    width: $tabletContainerWidth;
+  }
+}
+
+// Overwrite Bulma's max container width on desktop
+@media screen and (min-width: $desktop) {
+  .container {
+    width: $desktopContainerWidth;
+  }
+}
+
+// Overwrite Bulma's max container width on widescreen+
+@media screen and (min-width: $widescreen) {
+  .container {
+    width: $widescreenContainerWidth;
+  }
+}
+
+// Add spacing to the end to allow for tweaking
+@import 'assets/scss/spacing.scss';

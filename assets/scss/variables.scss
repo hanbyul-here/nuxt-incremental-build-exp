@@ -1,0 +1,95 @@
+/**
+ * SCSS variables
+ *
+ * See ACLU style guide: https://aclu-national.github.io/style/
+ **/
+
+// FONTS
+$aclu-sans-standard: Arial, Helvetica, "Nimbus Sans L", sans-serif;
+$aclu-sans-compressed: Arial, Helvetica, "Nimbus Sans L", sans-serif;
+$aclu-serif:  Georgia, "Times New Roman", "DejaVu Serif", serif;
+
+$normal: 400;
+$bold: 700;
+
+// FONT SIZES
+$size-1: 60px;
+$size-2: 42px;
+$size-3: 36px;
+$size-4: 24px;
+$size-5: 18px;
+$size-6: 16px;
+$size-7: 13px;
+
+$body-size: $size-5;
+
+// COLORS
+$blue: #0055aa;
+$red: #ef404e;
+$red-AA-compliant: #D93A3f; // WCAG AA compliant w/ white text
+
+$light-orange: #FCAA17;
+$light-yellow: #FFE06A;
+$light-pink: #FABEAF;
+
+$light-green: #A7D7B5;
+$dark-green: #00343A;
+$dark-purple: #552564;
+$dark-burgundy: #691B40;
+$dark-navy: #130F54;
+$light-azure: #A3DBE3;
+
+$light-slate: #EFECEA;
+$dark-slate: #3C3532;
+$offblack: #231F20;
+
+$white: #ffffff;
+$grey-10: #e5e5e5;
+$grey-20: #cccccc;
+$grey-40: #999999;
+$grey-60: #666666;
+$grey-80: #333333;
+
+$light: $light-slate; // $grey-10;
+$dark: $offblack;
+$text: $grey-80;
+
+$grey-darker:  $offblack;
+$grey-dark:    $grey-80;
+$grey:         $grey-60;
+$grey-light:   $grey-20;
+$grey-lighter: $grey-10;
+
+// brands
+$facebook: #3e5c98;
+$twitter: #2fa4f0;
+$youtube: #FF0000;
+$instagram: #DF2E75;
+
+$border: $grey-20;
+
+// MISC
+$hover-opacity: 0.65;
+
+// FORMS
+$inputHeight: 45px;
+$inputHeightLarge: 60px;
+
+// SPACING & BREAKPOINTS
+$spacer: 15px;
+$mobileSpacer: 7px;
+$columnPadding: 15px;
+
+$gap: 30px;
+$desktopGap: 20px;
+
+$tabletContainerWidth: 540px;
+$desktopContainerWidth: 960px;
+$widescreenContainerWidth: 1140px;
+
+$tablet: $tabletContainerWidth + (2 * $gap);           // S: 600 - 999
+$desktop: $desktopContainerWidth + (2 * $desktopGap);  // M: 1000 - 1199
+$widescreen: $widescreenContainerWidth + (2 * $gap);   // L: 1200+
+
+// Not using Bulma's built-in fullhd breakpoint (disabled in bulma-overrides.scss)
+// $fullhd: 1344px + (2 * $gap);

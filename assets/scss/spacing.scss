@@ -1,0 +1,99 @@
+/**  Spacing Utility Classes
+ *
+ *   Creates utility classes for margin and padding, based on a 15px spacer
+ *
+ *   Examples:
+ *      - mt-none { margin: 0}
+ *      - mt-sm (margin-top: 15px)
+ *      - pb-md (padding-bottom: 30px)
+ **/
+ // Need Bulma's mixins
+@import "~bulma/sass/utilities/mixins";
+
+$sizeUnit: px;
+$marginKey: 'm';
+$paddingKey: 'p';
+$separator: '-';
+$sizes: (
+    ('none', 0),
+    ('xxs', 7),
+    ('xs', 10),
+    ('sm', 15),
+    ('md', 30),
+    ('lg', 45),
+    ('xl', 60),
+    ('xxl', 90),
+);
+$positions: (
+    ('t', 'top'),
+    ('r', 'right'),
+    ('b', 'bottom'),
+    ('l', 'left')
+);
+
+@function sizeValue($key, $value) {
+    @return if($key == 'none', 0, $value + $sizeUnit);
+}
+
+@each $size in $sizes {
+    $sizeKey: nth($size, 1);
+    $sizeValue: nth($size, 2);
+    .#{$marginKey}#{$separator}#{$sizeKey} {
+        margin: sizeValue($sizeKey, $sizeValue);
+    }
+    .#{$paddingKey}#{$separator}#{$sizeKey} {
+        padding: sizeValue($sizeKey, $sizeValue);
+    }
+    @each $position in $positions {
+        $posKey: nth($position, 1);
+        $posValue: nth($position, 2);
+        .#{$marginKey}#{$posKey}#{$separator}#{$sizeKey} {
+            margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+        }
+        .#{$paddingKey}#{$posKey}#{$separator}#{$sizeKey} {
+            padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+        }
+
+        // these util classes for different screen sizes are dependent on bulma's mixins for screen sizes
+        @include mobile {
+            .#{$paddingKey}#{$posKey}#{$separator}#{$sizeKey}-mobile {
+                padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+            }
+            .#{$marginKey}#{$posKey}#{$separator}#{$sizeKey}-mobile {
+                margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+            }
+        }
+        @include tablet {
+            .#{$paddingKey}#{$posKey}#{$separator}#{$sizeKey}-tablet {
+                padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+            }
+            .#{$marginKey}#{$posKey}#{$separator}#{$sizeKey}-tablet {
+                margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+            }
+        }
+        @include touch {
+            .#{$paddingKey}#{$posKey}#{$separator}#{$sizeKey}-touch {
+                padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+            }
+            .#{$marginKey}#{$posKey}#{$separator}#{$sizeKey}-touch {
+                margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+            }
+        }
+        @include desktop {
+            .#{$paddingKey}#{$posKey}#{$separator}#{$sizeKey}-desktop {
+                padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+            }
+            .#{$marginKey}#{$posKey}#{$separator}#{$sizeKey}-desktop {
+                margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+            }
+        }
+        @include widescreen {
+            .#{$paddingKey}#{$posKey}#{$separator}#{$sizeKey}-widescreen {
+                padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+            }
+            .#{$marginKey}#{$posKey}#{$separator}#{$sizeKey}-widescreen {
+                margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+            }
+        }
+    }
+}
