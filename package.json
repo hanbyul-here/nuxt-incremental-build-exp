@@ -7,8 +7,8 @@
   "scripts": {
     "initial-build": "INITIAL_BUILD=true nuxt generate",
     "mock-cache-dir": "mkdir cache-mock; mv dist cache-mock/dist; mv .nuxt cache-mock/.nuxt",
-    "incremental-build":"mv cache-mock/.nuxt .nuxt && INITIAL_BUILD=false nuxt generate --no-build",
-    "merge":"rsync -avz dist/ cache-mock/dist",
+    "incremental-build": "mv cache-mock/.nuxt .nuxt && INITIAL_BUILD=false nuxt generate --no-build",
+    "merge": "rsync -avz dist/ cache-mock/dist",
     "dev": "DEPLOY_ENV=DEV nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
