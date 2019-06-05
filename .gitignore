@@ -11,7 +11,7 @@ yarn-error.log*
 
 # Nuxt generate
 dist
-cache-mock
+.nuxt_build
 
 # Bulma build
 .tmp

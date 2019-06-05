@@ -1,4 +1,4 @@
-export const initialRoutes = [
+const initialRoutes = [
   {
     route: 'subroute-a',
     payload: {
@@ -13,7 +13,7 @@ export const initialRoutes = [
   }
 ]
 
-export const additionalRoutes = [
+const additionalRoutes = [
   {
     route: 'subroute-c',
     payload: {
@@ -22,5 +22,12 @@ export const additionalRoutes = [
   }
 ]
 
-export const initialTotalRoutes = initialRoutes
-export const additionalTotalRoutes = initialRoutes.concat(additionalRoutes)
+const initialTotalRoutes = initialRoutes
+const additionalTotalRoutes = initialRoutes.concat(additionalRoutes)
+
+module.exports = {
+  initialRoutes,
+  additionalRoutes,
+  initialTotalRoutes,
+  additionalTotalRoutes
+}

@@ -1,6 +1,8 @@
-import { initialRoutes, additionalRoutes, initialTotalRoutes, additionalTotalRoutes } from './route-mock'
+import { cacheAndCopy } from './cache-me'
+const mockRoutes = require('./route-mock')
+const { initialRoutes, additionalRoutes, initialTotalRoutes, additionalTotalRoutes } = mockRoutes
 
-const routesToGenerate = process.env.INITIAL_BUILD === 'true' ? initialRoutes : additionalRoutes
+const routesToGenerate = process.env.INITIAL_BUILD !== 'false' ? initialRoutes : additionalRoutes
 const routesList = process.env.INITIAL_BUILD === 'true' ? initialTotalRoutes : additionalTotalRoutes
 const isDev = process.env.DEPLOY_ENV === 'DEV'
 
@@ -108,6 +110,13 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+      }
+    }
+  },
+  hooks: {
+    generate: {
+      async done() {
+        await cacheAndCopy()
       }
     }
   }
