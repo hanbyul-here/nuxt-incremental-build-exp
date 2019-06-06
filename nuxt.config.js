@@ -64,7 +64,6 @@ module.exports = {
           routesList: routesList
         }
       })
-      console.log(routes)
       callback(null, routes)
     }
   },

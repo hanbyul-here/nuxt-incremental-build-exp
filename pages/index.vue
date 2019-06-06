@@ -9,9 +9,9 @@
               <p>Nuxt.js project</p>
               <div v-if="!isTouch" class="pt-md">
                 <p>
-                  <nuxt-link v-for="(link, idx) in routesList" :key="`link-${idx}`" :to="link.route">
+                  <a v-for="(link, idx) in routesList" :key="`link-${idx}`" :href="link.route">
                     go to {{ link.route }}
-                  </nuxt-link>
+                  </a>
                 </p>
               </div>
             </div>
@@ -32,9 +32,9 @@ export default {
       return {
         routesList: [
           {
-            route: 'subroute-a',
+            route: 'subroute-1',
             payload: {
-              content: 'this is subroute a contents'
+              content: 'this is subroute 1 contents'
             }
           }
         ]
