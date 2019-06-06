@@ -33,7 +33,7 @@ async function cacheAndCopy() {
     rsync.execute(async function(error, code, cmd) {
       if (!error) {
         await fs.copy(CACHE_PATH, BUILD_PATH)
-        cacheFinalFiles()
+        await cacheFinalFiles()
         console.log('Please tell me you are well cached.')
       }
     })
