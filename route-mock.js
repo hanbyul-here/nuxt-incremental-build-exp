@@ -15,9 +15,9 @@ const initialRoutes = [
 
 const additionalRoutes = [
   {
-    route: 'subroute-c',
+    route: 'subroute-d',
     payload: {
-      content: 'this is subroute c contents'
+      content: 'this is subroute d contents'
     }
   }
 ]
