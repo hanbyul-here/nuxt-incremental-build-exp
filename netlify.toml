@@ -11,5 +11,5 @@
 
 [context.master]
   publish = "dist"
-  command = "npm run incremental-build"
+  command = "npm run clean-build"
   environment = { NODE_ENV = "PRODUCTION"}

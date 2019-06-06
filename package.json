@@ -11,6 +11,7 @@
     "start": "nuxt start",
     "clean-all": "rm -rf .nuxt; rm -rf dist;rm -rf .nuxt_build;",
     "generate": "nuxt generate",
+    "clean-build":"node empty-cache; npm run generate;",
     "generate-netlify": "DEPLOY_ENV=PRODUCTION nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",

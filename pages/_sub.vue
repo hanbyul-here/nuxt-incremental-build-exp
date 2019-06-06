@@ -12,10 +12,20 @@
 </template>
 
 <script>
+const { initialRoutes, additionalRoutes, initialTotalRoutes, additionalTotalRoutes } = require('../route-mock')
+
 export default {
   async asyncData({ params, error, payload }) {
     if (payload) return { contents: payload.content }
-    else return { contents: 'contents for sub page' }
+    else {
+      try {
+        const thisone = additionalTotalRoutes.filter(e => e.route === params.sub)[0]
+        if (thisone) return { contents: thisone.payload.content }
+        else throw 'error'
+      } catch (e) {
+        throw e
+      }
+    }
   }
 }
 </script>

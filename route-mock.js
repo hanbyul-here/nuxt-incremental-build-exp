@@ -1,23 +1,19 @@
-const initialRoutes = [
-  {
-    route: 'subroute-a',
+const routesNum = 10
+
+const initialRoutes = Array.apply(null, { length: routesNum - 1 })
+  .map(Number.call, Number)
+  .map(e => ({
+    route: `subroute-${e}`,
     payload: {
-      content: 'this is subroute a contents'
+      content: `this is subroute ${e} contents`
     }
-  },
-  {
-    route: 'subroute-b',
-    payload: {
-      content: 'this is subroute b contents'
-    }
-  }
-]
+  }))
 
 const additionalRoutes = [
   {
-    route: 'subroute-d',
+    route: `subroute-${routesNum - 1}`,
     payload: {
-      content: 'this is subroute d contents'
+      content: `this is subroute ${routesNum - 1} contents`
     }
   }
 ]

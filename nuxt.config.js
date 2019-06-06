@@ -2,8 +2,8 @@ const { cacheAndCopy } = require('./cache-me')
 const mockRoutes = require('./route-mock')
 const { initialRoutes, additionalRoutes, initialTotalRoutes, additionalTotalRoutes } = mockRoutes
 
-const routesToGenerate = additionalRoutes
-const routesList = process.env.INITIAL_BUILD === 'true' ? initialTotalRoutes : additionalTotalRoutes
+const routesToGenerate = initialRoutes
+const routesList = initialTotalRoutes
 const isDev = process.env.DEPLOY_ENV === 'DEV'
 
 module.exports = {
@@ -57,14 +57,15 @@ module.exports = {
    */
   generate: {
     fallback: true,
-    routes: function() {
+    routes: function(callback) {
       const routes = routesToGenerate.concat({
         route: '/',
         payload: {
           routesList: routesList
         }
       })
-      return routes
+      console.log(routes)
+      callback(null, routes)
     }
   },
   /*
@@ -115,7 +116,6 @@ module.exports = {
   },
   hooks: {
     generate: {
-      fallback: true,
       // async before() {
       //   console.log('this bef  orehook..')
       //   await putNuxtClientBack()
