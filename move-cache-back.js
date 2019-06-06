@@ -10,14 +10,17 @@ const CACHE_PATH = isProduction
 const BUILD_PATH = path.resolve(__dirname, 'dist')
 
 async function putNuxtClientBack() {
-  if (fs.existsSync(path.join(CACHE_PATH, '.nuxt'))) {
-    console.log('yes tehre is')
-    await fs.move(path.join(CACHE_PATH, '.nuxt'), path.resolve(__dirname, '.nuxt'))
-    console.log('done moving')
+  try {
+    if (fs.existsSync(path.join(CACHE_PATH, '.nuxt'))) {
+      await fs.move(path.join(CACHE_PATH, '.nuxt'), path.resolve(__dirname, '.nuxt'))
+    }
+  } catch (e) {
+    console.log(e)
   }
 }
 
 ;(async () => {
   // code goes here
+  console.log('did it even..?')
   await putNuxtClientBack()
 })()
