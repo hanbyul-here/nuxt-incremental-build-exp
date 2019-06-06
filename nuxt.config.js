@@ -2,7 +2,7 @@ const { cacheAndCopy, putCacheBack } = require('./cache-me')
 const mockRoutes = require('./route-mock')
 const { initialRoutes, additionalRoutes, initialTotalRoutes, additionalTotalRoutes } = mockRoutes
 
-const routesToGenerate = process.env.INITIAL_BUILD !== 'false' ? initialRoutes : additionalRoutes
+const routesToGenerate = process.env.INITIAL_BUILD !== 'false' ? additionalRoutes : initialRoutes
 const routesList = process.env.INITIAL_BUILD === 'true' ? initialTotalRoutes : additionalTotalRoutes
 const isDev = process.env.DEPLOY_ENV === 'DEV'
 
