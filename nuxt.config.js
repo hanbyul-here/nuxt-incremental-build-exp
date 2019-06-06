@@ -115,6 +115,7 @@ module.exports = {
   },
   hooks: {
     generate: {
+      fallback: true,
       // async before() {
       //   console.log('this bef  orehook..')
       //   await putNuxtClientBack()
