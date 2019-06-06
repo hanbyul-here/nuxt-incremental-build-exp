@@ -2,8 +2,8 @@ const { cacheAndCopy } = require('./cache-me')
 const mockRoutes = require('./route-mock')
 const { initialRoutes, additionalRoutes, initialTotalRoutes, additionalTotalRoutes } = mockRoutes
 
-const routesToGenerate = initialRoutes
-const routesList = initialTotalRoutes
+const routesToGenerate = additionalRoutes
+const routesList = additionalTotalRoutes
 const isDev = process.env.DEPLOY_ENV === 'DEV'
 
 module.exports = {
