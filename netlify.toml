@@ -7,9 +7,9 @@
 
 [build]
   publish = "dist"
-  command = "npm run incremental-build -- --baseURL $DEPLOY_PRIME_URL --NODE_ENV PRODUCTION"
+  command = "npm run generate -- --no-build --NODE_ENV PRODUCTION"
 
 [context.master]
   publish = "dist"
-  command = "npm run incremental-build -- --baseURL $DEPLOY_PRIME_URL --NODE_ENV PRODUCTION"
-  environment = { DEPLOY_ENV = "PROD"}
+  command = "npm run incremental-build"
+  environment = { NODE_ENV = "PRODUCTION"}
