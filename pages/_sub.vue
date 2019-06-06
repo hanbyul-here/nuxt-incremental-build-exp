@@ -21,7 +21,7 @@ export default {
       try {
         const thisone = additionalTotalRoutes.filter(e => e.route === params.sub)[0]
         if (thisone) return { contents: thisone.payload.content }
-        else throw 'error'
+        else return { contents: 'this should be 404' }
       } catch (e) {
         throw e
       }
