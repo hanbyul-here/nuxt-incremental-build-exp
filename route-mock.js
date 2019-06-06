@@ -1,4 +1,4 @@
-const routesNum = 10
+const routesNum = 11
 
 const initialRoutes = Array.apply(null, { length: routesNum - 1 })
   .map(Number.call, Number)
