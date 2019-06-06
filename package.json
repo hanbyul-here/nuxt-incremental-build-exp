@@ -5,7 +5,7 @@
   "author": "Hanbyul Jo <hanbyul@nyu.edu>",
   "scripts": {
     "initial-build": "INITIAL_BUILD=true nuxt generate",
-    "incremental-build": "INITIAL_BUILD=false nuxt generate --no-build;",
+    "incremental-build": "node move-cache-back; nuxt generate --no-build;",
     "dev": "DEPLOY_ENV=DEV nuxt",
     "build": "nuxt build",
     "start": "nuxt start",

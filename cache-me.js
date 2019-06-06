@@ -2,6 +2,8 @@ const fs = require('fs-extra')
 const path = require('path')
 const Rsync = require('rsync')
 
+
+
 const isProduction = process.env.NODE_ENV === 'PRODUCTION'
 
 const CACHE_PATH = isProduction
@@ -16,15 +18,16 @@ const rsync = new Rsync()
   .source(BUILD_PATH + '/')
   .destination(CACHE_PATH)
 
-export async function cacheFinalFiles() {
+async function cacheFinalFiles() {
   try {
     await fs.copy(BUILD_PATH, CACHE_PATH)
+    await fs.move(path.resolve(__dirname, '.nuxt'), path.join(CACHE_PATH, '.nuxt'))
   } catch (e) {
     console.log(e)
   }
 }
 
-export async function cacheAndCopy() {
+async function cacheAndCopy() {
   try {
     await fs.ensureDir(CACHE_PATH)
     rsync.execute(async function(error, code, cmd) {
@@ -38,4 +41,19 @@ export async function cacheAndCopy() {
     // handle error
     console.log(err)
   }
+}
+
+async function putCacheBack() {
+  try {
+    await fs.ensureDir(BUILD_PATH)
+    await fs.copy(CACHE_PATH + '/', BUILD_PATH + '/')
+    console.log('before hook done')
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+module.exports = {
+  cacheAndCopy,
+  putCacheBack
 }

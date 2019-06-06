@@ -1,4 +1,4 @@
-import { cacheAndCopy } from './cache-me'
+const { cacheAndCopy, putCacheBack } = require('./cache-me')
 const mockRoutes = require('./route-mock')
 const { initialRoutes, additionalRoutes, initialTotalRoutes, additionalTotalRoutes } = mockRoutes
 
@@ -115,8 +115,13 @@ module.exports = {
   },
   hooks: {
     generate: {
+      // async before() {
+      //   console.log('this bef  orehook..')
+      //   await putNuxtClientBack()
+      // },
       async done() {
         await cacheAndCopy()
+        console.log('done')
       }
     }
   }
