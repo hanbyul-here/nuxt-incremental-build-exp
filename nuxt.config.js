@@ -1,4 +1,4 @@
-const { cacheAndCopy, putCacheBack } = require('./cache-me')
+const { cacheAndCopy } = require('./cache-me')
 const mockRoutes = require('./route-mock')
 const { initialRoutes, additionalRoutes, initialTotalRoutes, additionalTotalRoutes } = mockRoutes
 

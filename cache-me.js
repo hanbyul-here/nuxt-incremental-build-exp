@@ -39,21 +39,15 @@ async function cacheAndCopy() {
     })
   } catch (err) {
     // handle error
+    console.log('cache and copy ')
     console.log(err)
   }
 }
 
 async function putCacheBack() {
-  try {
-    await fs.ensureDir(BUILD_PATH)
-    await fs.copy(CACHE_PATH + '/', BUILD_PATH + '/')
-    console.log('before hook done')
-  } catch (e) {
-    console.log(e)
-  }
+
 }
 
 module.exports = {
-  cacheAndCopy,
-  putCacheBack
+  cacheAndCopy
 }
