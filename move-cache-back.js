@@ -19,6 +19,5 @@ async function putNuxtClientBack() {
 
 ;(async () => {
   // code goes here
-  console.log('did it even..?')
   await putNuxtClientBack()
 })()

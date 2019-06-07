@@ -2,8 +2,6 @@ const fs = require('fs-extra')
 const path = require('path')
 const Rsync = require('rsync')
 
-
-
 const isProduction = process.env.NODE_ENV === 'PRODUCTION'
 
 const CACHE_PATH = isProduction
