@@ -9,7 +9,7 @@
               <p>Nuxt.js project</p>
               <div v-if="!isTouch" class="pt-md">
                 <p>
-                  <a v-for="(link, idx) in routesList" :key="`link-${idx}`" :href="link.route">
+                  <a v-for="(link, idx) in routesList" :key="`link-${idx}`" :href="`${link.route}/`">
                     go to {{ link.route }}
                   </a>
                 </p>
