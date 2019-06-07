@@ -4,9 +4,9 @@ This repo is a proof of concept for incremental build strategy using Nuxt in Net
 
 ## Why
 
-My website is going to have thousands of posts! Nuxt will have hard time generating all these routes/pages. Netlify always deploys things  What can I do?
+My website is going to have thousands of posts! Nuxt will have hard time generating all these routes/pages. Netlify always deploys things like it is the first build. What can I do?
 
-### How
+## How
 
 Nuxt can build a portion of a site at one time through `--no-build` flag with `generate` command. When `--no-build` flag is set, Nuxt doesn’t generate common assets such as js, css files, only generates the routes(pages) passed through `generate.routes` in `nuxt.config`.
 
