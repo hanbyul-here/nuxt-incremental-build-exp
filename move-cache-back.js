@@ -1,5 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
+const { exec } = require("child_process")
 
 const isProduction = process.env.NODE_ENV === 'PRODUCTION'
 
@@ -10,20 +11,38 @@ const CACHE_PATH = isProduction
 const BUILD_PATH = path.resolve(__dirname, '.nuxt')
 
 async function putNuxtClientBack() {
-  fs.pathExists(CACHE_PATH, (err, exists) => {
-    console.log('check cachepath')
-    console.log(err) // => null
-    console.log(exists) // => false
-  })
-
-  try {
+  const exists = await fs.pathExists(CACHE_PATH)
+  if (exists) {
+    console.log("cache found")
     await fs.copy(CACHE_PATH + '/.nuxt', BUILD_PATH)
-  } catch (e) {
-    console.log(e)
+    exec('nuxt generate --no-build', (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+  } else {
+    console.log("no cache")
+    exec('npm run generate', (error, stdout, stderr) => {
+      if (error) {
+          console.log(`error: ${error.message}`);
+          return;
+      }
+      if (stderr) {
+          console.log(`stderr: ${stderr}`);
+          return;
+      }
+      console.log(`stdout: ${stdout}`);
+  });
   }
 }
 
 ;(async () => {
-
   await putNuxtClientBack()
+
 })()
