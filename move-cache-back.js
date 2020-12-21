@@ -10,6 +10,12 @@ const CACHE_PATH = isProduction
 const BUILD_PATH = path.resolve(__dirname, '.nuxt')
 
 async function putNuxtClientBack() {
+  fs.pathExists(CACHE_PATH, (err, exists) => {
+    console.log('check cachepath')
+    console.log(err) // => null
+    console.log(exists) // => false
+  })
+
   try {
     await fs.copy(CACHE_PATH + '/.nuxt', BUILD_PATH)
   } catch (e) {
@@ -18,6 +24,6 @@ async function putNuxtClientBack() {
 }
 
 ;(async () => {
-  // code goes here
+
   await putNuxtClientBack()
 })()
