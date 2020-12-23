@@ -14,7 +14,7 @@ async function putNuxtClientBack() {
   const exists = await fs.pathExists(CACHE_PATH)
   if (exists) {
     console.log("cache found")
-    await fs.copy(CACHE_PATH + '/.nuxt', BUILD_PATH)
+    await fs.copy(CACHE_PATH, BUILD_PATH)
     exec('nuxt generate --no-build', (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);

@@ -33,7 +33,7 @@ async function cacheAndCopy() {
         await fs.copy(CACHE_PATH, BUILD_PATH)
         await cacheFinalFiles()
         console.log('Please tell me you are well cached.')
-      }
+      } else console.error('error')
     })
   } catch (err) {
     // handle error

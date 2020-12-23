@@ -7,9 +7,7 @@ const routesList = additionalTotalRoutes
 const isDev = process.env.DEPLOY_ENV === 'DEV'
 
 module.exports = {
-  /*
-   ** Headers of the page
-   */
+  target: 'static',
   head: {
     title: 'my-project',
     htmlAttrs: {
